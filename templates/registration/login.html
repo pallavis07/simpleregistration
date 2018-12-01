@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<h2>Login</h2>
+
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{# Display a form #}
+<form method="post">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <!-- {{ form.as_p }} -->
+
+
+  {% csrf_token %}
+
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      {% bootstrap_icon "star" %} Submit
+    </button>
+    <a class="btn btn-primary" href="{% url 'password_reset' %}">Forgot Password</a>
+  {% endbuttons %}
+</form>
+
+{% endblock %}
